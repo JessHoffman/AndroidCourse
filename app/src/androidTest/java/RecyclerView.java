@@ -25,7 +25,7 @@ public class MyActivity extends Activity {
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
     }
-    ...
+
 }
 
 public class RecyclerView.Adapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
