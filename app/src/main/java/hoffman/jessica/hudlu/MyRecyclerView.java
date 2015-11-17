@@ -1,6 +1,12 @@
+package hoffman.jessica.hudlu;
+
 /**
  * Created by jessica.hoffman on 11/16/15.
  */
+public class MyRecyclerView {
+
+
+}
 
 public class MyActivity extends Activity {
     private RecyclerView mRecyclerView;
@@ -25,23 +31,23 @@ public class MyActivity extends Activity {
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
     }
-
+    ...
 }
 
 public class RecyclerView.Adapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private String[] mDataset;
+private String[] mDataset;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView mTextView;
-        public ViewHolder(TextView v) {
-            super(v);
-            mTextView = v;
-        }
+// Provide a reference to the views for each data item
+// Complex data items may need more than one view per item, and
+// you provide access to all the views for a data item in a view holder
+public static class ViewHolder extends RecyclerView.ViewHolder {
+    // each data item is just a string in this case
+    public TextView mTextView;
+    public ViewHolder(TextView v) {
+        super(v);
+        mTextView = v;
     }
+}
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(String[] myDataset) {
@@ -50,8 +56,8 @@ public class RecyclerView.Adapter extends RecyclerView.Adapter<MyAdapter.ViewHol
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                     int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view, parent, false);
@@ -63,7 +69,7 @@ public class RecyclerView.Adapter extends RecyclerView.Adapter<MyAdapter.ViewHol
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder myviewholder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset[position]);
@@ -76,6 +82,8 @@ public class RecyclerView.Adapter extends RecyclerView.Adapter<MyAdapter.ViewHol
         return mDataset.length;
     }
 
-    extend RecyclerView<MyAdapter.ViewHolder>
+    function constr(Context) {
+
+    }
 
 }
