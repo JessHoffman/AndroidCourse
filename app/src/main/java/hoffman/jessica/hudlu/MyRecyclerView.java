@@ -1,5 +1,12 @@
 package hoffman.jessica.hudlu;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
+
 /**
  * Created by jessica.hoffman on 11/16/15.
  */
@@ -31,22 +38,38 @@ public class MyActivity extends Activity {
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
     }
-    ...
 }
 
-public class RecyclerView.Adapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyActivity extends RecyclerView<MyAdapter.MyViewHolder>(Context) {
 private String[] mDataset;
 
 // Provide a reference to the views for each data item
 // Complex data items may need more than one view per item, and
 // you provide access to all the views for a data item in a view holder
-public static class ViewHolder extends RecyclerView.ViewHolder {
+public static class ViewHolder extends RecyclerView.MyViewHolder {
     // each data item is just a string in this case
+
+    //is each letter gonna end up being equal to a string?
     public TextView mTextView;
     public ViewHolder(TextView v) {
         super(v);
         mTextView = v;
+
+        @android:id/text1 = "something..";
     }
+
+    public TextView mTextView;
+    public ViewHolder(TextView e) {
+        super(e);
+        mTextView = e;
+    }
+
+    public TextView mTextView;
+    public ViewHolder(TextView t) {
+        super(t);
+        mTextView = t;
+    }
+
 }
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -82,8 +105,30 @@ public static class ViewHolder extends RecyclerView.ViewHolder {
         return mDataset.length;
     }
 
-    function constr(Context) {
+    //function constr(Context context) {}
 
-    }
+
+//..not really sure how to get the cardview in
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            >
+    <!-- A CardView that contains a TextView -->
+    <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            card_view:cardCornerRadius="4dp">
+
+    <TextView
+        android:id="@+id/info_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v7.widget.CardView>
+    </LinearLayout>
+
 
 }
+
