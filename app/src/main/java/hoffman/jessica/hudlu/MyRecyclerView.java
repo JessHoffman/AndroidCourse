@@ -3,8 +3,12 @@ package hoffman.jessica.hudlu;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -12,13 +16,11 @@ import android.widget.TextView;
  */
 public class MyRecyclerView {
 
-
-}
-
-public class MyActivity extends Activity {
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    public class MyActivity extends Activity {
+        private RecyclerView mRecyclerView;
+        private RecyclerView.Adapter mAdapter;
+        private RecyclerView.LayoutManager mLayoutManager;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,14 @@ public class MyActivity extends Activity {
     }
 }
 
-public class MyActivity extends RecyclerView<MyAdapter.MyViewHolder>(Context) {
-private String[] mDataset;
+public class MyActivity extends RecyclerView<MyAdapter.MyViewHolder> { //from step 5a.
+    //step 5.c
+    TextView mMyText;
+    public MyViewHolder(View v) {
+        super(v);
+        mMyText = (TextView) v.findViewById(R.id.some_test); //red lightbulb
+
+        private String[] mDataset;
 
 // Provide a reference to the views for each data item
 // Complex data items may need more than one view per item, and
@@ -49,7 +57,11 @@ private String[] mDataset;
 public static class ViewHolder extends RecyclerView.MyViewHolder {
     // each data item is just a string in this case
 
-    //is each letter gonna end up being equal to a string?
+    mListener= (OnAdapterInteractionListener)context; //this must be in the wrong place.
+
+    Snackbar.make(view, myDataset[position], Snackbar.LENGTH_SHORT).show();
+
+    //is each letter gonna end up being equal to a string? the random syntax I'm finding is wrong.
     public TextView mTextView;
     public ViewHolder(TextView v) {
         super(v);
@@ -70,6 +82,9 @@ public static class ViewHolder extends RecyclerView.MyViewHolder {
         mTextView = t;
     }
 
+    public interface toInteract {
+        void onItemClicked(View view,int position);
+
 }
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -77,10 +92,13 @@ public static class ViewHolder extends RecyclerView.MyViewHolder {
         mDataset = myDataset;
     }
 
-    // Create new views (invoked by the layout manager)
+        public MyAdapter(String[] myDataset){
+            private final String[] myDataset = new String[]{"Adam Gucwa", "Alberto Chamorro", "Chanse Strode", "Craig Zheng", "David Bohner", "Eric Clymer", "Jessica Hoffman", "Jon Evans", "Jordan Degner", "Mitchel Pigsley", "Peter Yasi", "Seth Prauner", "Sue Yi", "Zach Ramaekers", "Mike Isman", "Josh Cox"};
+        }
+
+        // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view, parent, false);
@@ -95,40 +113,55 @@ public static class ViewHolder extends RecyclerView.MyViewHolder {
     public void onBindViewHolder(ViewHolder myviewholder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        holder.mTextView.setText(mDataset[position]); //!!!!set the text of your text view to be the data from your array/list using the position parameter
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                mListener.onItemClicked(v, position);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
+        //see what else I need to do in step 6.f
     @Override
     public int getItemCount() {
         return mDataset.length;
     }
 
-    //function constr(Context context) {}
+    function constr(Context this); {
+        //strings should be involved
+    }
 
 
 //..not really sure how to get the cardview in
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android";
+            xmlns:tools="http://schemas.android.com/tools";
+            xmlns:card_view="http://schemas.android.com/apk/res-auto";
             >
-    <!-- A CardView that contains a TextView -->
-    <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view"
-            android:layout_gravity="center"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            card_view:cardCornerRadius="4dp">
+    //<!-- A CardView that contains a TextView -->
+    <android.support.v7.widget.CardView;
+            xmlns:card_view="http://schemas.android.com/apk/res-auto";
+            android:id="@+id/card_view";
+            android:layout_gravity="center";
+            android:layout_width="200dp";
+            android:layout_height="200dp";
+            card_view:cardCornerRadius="4dp">;
 
     <TextView
-        android:id="@+id/info_text"
+        android:id="@+id/info_text";
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" />;
     </android.support.v7.widget.CardView>
+
+                ImageView(Context context)
+
     </LinearLayout>
 
+                android:src="@drawable/icon_hudllogo";
 
-}
+    public interface toInteract {
+        void onItemClicked(View view,int position);
 
+};
